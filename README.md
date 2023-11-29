@@ -1,20 +1,54 @@
-<h1 align = "center" >Unblocker</h1>
-A simplified unblocker using the Payment Request API. Credits to @buypassiwastaken for the idea. Check out his full repo here: https://github.com/bypassiwastaken/buypass/
+# The Buypass
 
-## Deployment
+  **WARNING: This is a mid bypass. If you don't like it, cope.**
 
-[![Deploy with Netlify](https://binbashbanana.github.io/deploy-buttons/buttons/remade/netlify.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Platformer.io/Platformer.io.github.io)
-[![Deploy to Render](https://binbashbanana.github.io/deploy-buttons/buttons/remade/render.svg)](https://render.com/deploy?repo=https://github.com/Platformer.io/Platformer.io.github.io)
-[![Deploy with Vercel](https://binbashbanana.github.io/deploy-buttons/buttons/remade/vercel.svg)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FPlatformer.io%2FPlatformer.io.github.io) 
-[![Remix on Glitch](https://binbashbanana.github.io/deploy-buttons/buttons/remade/glitch.svg)](https://glitch.com/edit/#!/import/github/Platformer.io/Platformer.io.github.io)
+## How it works
+There's an obscure API in most browsers called the [Payment Request API](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API). The use purpose is to provide an easy way for websites to make transactions. In practice, this means opening a small window containing a website. In short, this weird window messes up the filtering of some extensions.
 
-## FAQ
+## What it can and can't do
+- **This only lasts for 3 minutes!**
+- Pages visited in this window will not be saved to your history, but their cookies will be saved.
+- You can right-click on the window to go back and forward.
+- There's no good way to make the text in the window larger.
+- This won't bypass network filters.
+- You can't log into non-school accounts.
+- It's completely possible that some filters could read and block the data sent within the window.
 
-#### Websites don't work.
+## How to set it up yourself
 
-This may not work on some websites, but I can't fix it. Stop begging me.
+You can just clone and host this repo. Don't change anything in `pay` folder unless you know what you're doing.
 
+The base code for opening the `PaymentRequest` looks like this:
 
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
+```js
+new PaymentRequest(
+  [
+    {
+      supportedMethods: location.origin + "/pay/main.json"
+    },
+  ],
+  {
+    total: {
+      label: "_",
+      amount: { value: "1", currency: "USD" },
+    },
+  }
+).show();
+```
+The code above will load google.com by default. To specify a URL, do the following:
+```js
+new PaymentRequest(
+  [
+    {
+      supportedMethods: location.origin + "/pay/main.json",
+      data: { url: "https://youtube.com" },
+    },
+  ],
+  {
+    total: {
+      label: "_",
+      amount: { value: "1", currency: "USD" },
+    },
+  }
+).show();
+```
