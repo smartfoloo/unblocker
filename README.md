@@ -1,5 +1,5 @@
 <h1 align = "center" >Unblocker</h1>
-A simplified unblocker using the Payment Request API. Credits to @buypassiwastaken for the idea. Check out his full repo here: [[https://github.com/bypassiwastaken/buypass/](https://github.com/bypassiwastaken/buypass/)](https://github.com/bypassiwastaken/buypass/)
+A simplified unblocker using the Payment Request API. Credits to @buypassiwastaken for the idea. Check out his full repo here: https://github.com/bypassiwastaken/buypass/
 
 ## Deployment
 
